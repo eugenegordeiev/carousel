@@ -2,18 +2,18 @@ version: '3.7'
 services:
     # Node
     nodejs:
-        build: 
+        build:
             context: node/
         container_name: nodejs
         environment:
             - NODE_PATH=/node_modules
             - API_PROTOCOL=${API_PROTOCOL}
             - API_HOST=${API_HOST}
-            - API_PORT=${API_PORT}  
+            - API_PORT=${API_PORT}
             - SERVICE_NAME=node1
         expose:
             - ${API_PORT}
-        ports: 
+        ports:
             - ${API_PORT}:3000
     ui:
         build:
