@@ -2,8 +2,6 @@ import ApiClient, { networkError } from 'apis/ApiClient';
 
 export const getImagesApi = async (data) => {
 
-    console.log('getImagesApi', data);
-
     return ApiClient.get(
         `/public/images/${data}`,
     ).then(response => {

@@ -1,7 +1,6 @@
-import React, { useContext, Suspense } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Main from 'pages/main';
-import { Loader } from 'shared/components';
 
 export default () => {
     return (
