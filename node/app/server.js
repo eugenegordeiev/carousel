@@ -44,7 +44,6 @@ app.options("/*", function(req, res, next){
 
 // Add public directory
 app.use('/public', express.static(__dirname + '/public'));
-app.use('/resources', express.static(process.env.DATA_PATH));
 
 var routes = require('./api/routes/publicRoute');
 

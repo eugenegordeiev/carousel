@@ -11,9 +11,6 @@ services:
             - API_HOST=${API_HOST}
             - API_PORT=${API_PORT}  
             - SERVICE_NAME=node1
-            - DATA_PATH=/data/
-        volumes:
-            - ${DATA_PATH}app_data:/data/
         expose:
             - ${API_PORT}
         ports: 
