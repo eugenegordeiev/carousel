@@ -12,19 +12,8 @@ services:
     ui:
         build:
             context: ui/
-        stdin_open: true
-        tty: true
         expose:
             - 80
         ports: 
-            - 80:3000
-        environment:
-            - NODE_ENV=development
-            - CHOKIDAR_USEPOLLING=true
-        volumes:
-            - ${UI_PATH}:/app
-            - node_modules:/app/node_modules
-            - ${UI_PATH}/node_modules:/app/node_modules
+            - 80:80
         container_name: react_dev
-volumes:
-    node_modules:

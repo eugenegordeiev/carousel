@@ -17,7 +17,7 @@ start_development() {
     load_config "dev"
 
     echo "Starting development environment..."
-    exec docker-compose -f app.yml -f app.dev.yml up -d --force-recreate --build nodejs
+    exec docker-compose -f app.yml -f app.dev.yml up -d --force-recreate --build nodejs ui
     clean_up
 }
 
