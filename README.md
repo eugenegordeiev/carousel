@@ -14,4 +14,11 @@ The API server by default is running on port 8080 utilizing Node/Express.  The f
 
 ### Installation
 
+Clone Repo
+git clone -b feature-branch https://github.com/eugenegordeiev/carousel.git testApp
+
+cd testApp
+
 ./start-app.sh
+
+Open browser http://localhost
