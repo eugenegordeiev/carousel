@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+    # Node
+    nodejs:
+        build:
+            context: node/
+            target: prod
+        container_name: nodejs_prod
+        restart: unless-stopped
+        volumes:
+            - ${APP_PATH}:/app
+    #UI
+    ui:
+        build:
+            context: ui/
+            dockerfile: Dockerfile-prod
+        expose:
+            - 80
+            - 443
+        ports: 
+            - 80:80
+            - 443:443
+        restart: unless-stopped
+        container_name: nginx_prod

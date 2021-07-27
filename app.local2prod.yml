@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+    # Node
+    nodejs:
+        build:
+            context: node/
+            target: prod
+        container_name: nodejs_prod
+        volumes:
+            - ${APP_PATH}:/app
+    #UI
+    ui:
+        build:
+            context: ui/
+            dockerfile: Dockerfile-local2prod
+        expose:
+            - 80
+        ports: 
+            - 80:80
+        container_name: nginx_prod

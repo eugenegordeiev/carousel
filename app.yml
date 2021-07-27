@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+    # Node
+    nodejs:
+        build: 
+            context: node/
+        container_name: nodejs
+        environment:
+            - NODE_PATH=/node_modules
+            - API_PROTOCOL=${API_PROTOCOL}
+            - API_HOST=${API_HOST}
+            - API_PORT=${API_PORT}  
+            - SERVICE_NAME=node1
+            - DATA_PATH=/data/
+        volumes:
+            - ${DATA_PATH}app_data:/data/
+        expose:
+            - ${API_PORT}
+        ports: 
+            - ${API_PORT}:3000
+    ui:
+        build:
+            context: ui/
+        environment:
+            - REACT_APP_API_PROTOCOL=${API_PROTOCOL}
+            - REACT_APP_API_HOST=${API_HOST}
+            - REACT_APP_API_PORT=${API_PORT}
+        container_name: nginx
+        depends_on:
+            - nodejs

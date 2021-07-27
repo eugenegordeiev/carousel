@@ -1,0 +1,48 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+body {
+  background: rgb(247, 249, 252);
+}
+
+.switch-enter {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.switch-enter.switch-enter-active {
+  opacity: 1;
+}
+
+.switch-leave {
+  opacity: 1.0;
+  height: 0;
+}
+
+.switch-leave.switch-leave-active {
+  opacity: 0;
+}
+
+.gallery {
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.slogan {
+  position: absolute;
+  z-index: 999;
+}
+
+.sloganText {
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  padding: 0px 5px;
+}
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
