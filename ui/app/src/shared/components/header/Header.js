@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { getPath } from 'paths/Paths';
-import { Link as RouterLink, useParams } from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { useParams, useHistory } from "react-router-dom";
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 const Header = (props) => {
     let { imageType } = useParams();
+    const [imageTypeSelection, setImageTypeSelection] = useState(() => imageType === 'all'?['sharks', 'cats']:imageType);
+    const history = useHistory();
+
+    const handleImageTypeChange = (event, newImageType) => {
+        setImageTypeSelection(newImageType);
+    };
+
+    useEffect(() => {
+
+        console.log('imageTypeSelection',imageTypeSelection);
+        // Update the URL
+        if(imageTypeSelection.length === 1){
+            history.push({pathname: getPath('carousel.imageType', imageTypeSelection[0])});
+        }
+        else if(imageTypeSelection.length > 1) {
+            history.push({pathname: getPath('carousel.imageType', 'all')});
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [imageTypeSelection]);
+
+
 
     return (
-        <ButtonGroup color="primary" variant="contained">
-            <Button
-                disabled={imageType==='sharks'?true:false}
-                component={RouterLink}
-                to={{pathname: getPath('carousel.imageType', 'sharks')}}
-                >
+        <ToggleButtonGroup value={imageTypeSelection} onChange={handleImageTypeChange}>
+            <ToggleButton value="sharks" aria-label="sharks">
                 Sharks
-            </Button>
-            <Button
-                disabled={imageType==='cats'?true:false}
-                component={RouterLink}
-                to={{pathname: getPath('carousel.imageType', 'cats')}}
-                >
+            </ToggleButton>
+            <ToggleButton value="cats" aria-label="cats">
                 Cats
-            </Button>
-        </ButtonGroup>
+            </ToggleButton>
+        </ToggleButtonGroup>
     );
 };
 export default Header;
