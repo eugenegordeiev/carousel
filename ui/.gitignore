@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+.idea/
+app/build/
+app/.env
+app/.eslintcache
+app/yarn.lock

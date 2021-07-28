@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+    # Node
+    nodejs:
+        build:
+            context: node/
+            target: dev
+        container_name: nodejs_dev
+        volumes:
+            - ${APP_PATH}:/app
+    #UI
+    ui:
+        build:
+            context: ui/
+        expose:
+            - 80
+        ports:
+            - 80:80
+        container_name: react_dev
